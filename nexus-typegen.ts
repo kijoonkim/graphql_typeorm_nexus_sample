@@ -28,6 +28,13 @@ export interface NexusGenScalars {
 }
 
 export interface NexusGenObjects {
+  AttachFile: { // root type
+    boardId: number; // Int!
+    fileName: string; // String!
+    fileSize: number; // Int!
+    id: number; // Int!
+    mimetype: string; // String!
+  }
   Auth: { // root type
     token: string; // String!
     user: NexusGenRootTypes['User']; // User!
@@ -60,6 +67,13 @@ export type NexusGenRootTypes = NexusGenObjects
 export type NexusGenAllTypes = NexusGenRootTypes & NexusGenScalars
 
 export interface NexusGenFieldTypes {
+  AttachFile: { // field return type
+    boardId: number; // Int!
+    fileName: string; // String!
+    fileSize: number; // Int!
+    id: number; // Int!
+    mimetype: string; // String!
+  }
   Auth: { // field return type
     token: string; // String!
     user: NexusGenRootTypes['User']; // User!
@@ -72,11 +86,13 @@ export interface NexusGenFieldTypes {
     title: string; // String!
   }
   Mutation: { // field return type
+    createAttachFile: NexusGenRootTypes['AttachFile']; // AttachFile!
     createBoard: NexusGenRootTypes['Board']; // Board!
     login: NexusGenRootTypes['Auth']; // Auth!
     register: NexusGenRootTypes['Auth']; // Auth!
   }
   Query: { // field return type
+    attachFiles: NexusGenRootTypes['AttachFile'][]; // [AttachFile!]!
     boards: NexusGenRootTypes['Board'][]; // [Board!]!
   }
   User: { // field return type
@@ -89,6 +105,13 @@ export interface NexusGenFieldTypes {
 }
 
 export interface NexusGenFieldTypeNames {
+  AttachFile: { // field return type name
+    boardId: 'Int'
+    fileName: 'String'
+    fileSize: 'Int'
+    id: 'Int'
+    mimetype: 'String'
+  }
   Auth: { // field return type name
     token: 'String'
     user: 'User'
@@ -101,11 +124,13 @@ export interface NexusGenFieldTypeNames {
     title: 'String'
   }
   Mutation: { // field return type name
+    createAttachFile: 'AttachFile'
     createBoard: 'Board'
     login: 'Auth'
     register: 'Auth'
   }
   Query: { // field return type name
+    attachFiles: 'AttachFile'
     boards: 'Board'
   }
   User: { // field return type name
@@ -119,6 +144,12 @@ export interface NexusGenFieldTypeNames {
 
 export interface NexusGenArgTypes {
   Mutation: {
+    createAttachFile: { // args
+      boardId: number; // Int!
+      fileName: string; // String!
+      fileSize: number; // Int!
+      mimetype: string; // String!
+    }
     createBoard: { // args
       content: string; // String!
       title: string; // String!
@@ -132,6 +163,11 @@ export interface NexusGenArgTypes {
       password: string; // String!
       userId: string; // String!
       username: string; // String!
+    }
+  }
+  Query: {
+    attachFiles: { // args
+      boardId: number; // Int!
     }
   }
 }

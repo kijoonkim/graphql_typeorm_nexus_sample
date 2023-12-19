@@ -1,5 +1,6 @@
-import { BaseEntity, Column, CreateDateColumn, Entity, ManyToOne, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
+import { BaseEntity, Column, CreateDateColumn, Entity, ManyToOne, OneToMany, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
 import { User } from "./User";
+import { AttachFile } from "./AttachFile";
 
 @Entity()
 export class Board extends BaseEntity {
@@ -17,6 +18,9 @@ export class Board extends BaseEntity {
 
     @ManyToOne(() => User, (user) => user.boards)
     creator!: User;
+
+    @OneToMany(() => AttachFile, (attachFile) => attachFile.board)
+    attachFiles!: AttachFile;
 
     @CreateDateColumn()
     createdAt!: Date;

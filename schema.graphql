@@ -2,6 +2,14 @@
 ### Do not make changes to this file directly
 
 
+type AttachFile {
+  boardId: Int!
+  fileName: String!
+  fileSize: Int!
+  id: Int!
+  mimetype: String!
+}
+
 type Auth {
   token: String!
   user: User!
@@ -16,12 +24,14 @@ type Board {
 }
 
 type Mutation {
+  createAttachFile(boardId: Int!, fileName: String!, fileSize: Int!, mimetype: String!): AttachFile!
   createBoard(content: String!, title: String!): Board!
   login(password: String!, userId: String!): Auth!
   register(email: String!, password: String!, userId: String!, username: String!): Auth!
 }
 
 type Query {
+  attachFiles(boardId: Int!): [AttachFile!]!
   boards: [Board!]!
 }
 
