@@ -7,13 +7,13 @@ export class AttachFile extends BaseEntity {
     id!: number;
 
     @Column()
-    fileName!: string;
-
-    @Column()
-    fileSize!: number;
+    filename!: string;
 
     @Column()
     mimetype!: string;
+
+    @Column()
+    encoding!: string;
     
     @Column()
     boardId!: number;
